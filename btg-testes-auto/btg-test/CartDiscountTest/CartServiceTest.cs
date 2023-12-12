@@ -26,6 +26,7 @@ namespace btg_test.CartDiscountTest
         {
             //Arrange
             var items = new List<CartItem>();
+            
 
             //Act
             var result = _service.CalculateTotalWithDiscount(items);
@@ -41,8 +42,8 @@ namespace btg_test.CartDiscountTest
             // Arrange
             var items = new List<CartItem>
                 {
-                    new CartItem { Price = 10 },
-                    new CartItem { Price = 20 }
+                    new CartItem { Price = 10, ProductId = "1" },
+                    new CartItem { Price = 20, ProductId = "2" }
                 };
 
             // Act

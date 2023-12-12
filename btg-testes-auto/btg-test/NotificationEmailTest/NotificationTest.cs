@@ -2,6 +2,7 @@
 using btg_testes_auto.Order;
 using FluentAssertions;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace btg_test.NotificationEmailTest
         public void SendNotification_MessageNull_ReturnFalse()
         {
             //Arrange
-            string recipient = null;
+            string recipient = "email@email.com";
             string message = null;
 
             //Act
@@ -39,7 +40,7 @@ namespace btg_test.NotificationEmailTest
         public void SendNotification_MessageEmpty_ReturnFalse()
         {
             //Arrange
-            string recipient = null;
+            string recipient = "email@email.com";
             string message = " ";
 
             //Act
@@ -53,7 +54,7 @@ namespace btg_test.NotificationEmailTest
         public void SendNotification_SendEmail_EmailSent()
         {
             //Arrange
-            string recipient = null;
+            string recipient = "email@email.com";
             string message = "message";
 
             _mockEmailService.SendEmail(recipient, "Notification", message)
@@ -67,14 +68,31 @@ namespace btg_test.NotificationEmailTest
         }
 
         [Fact]
-        public void SendNotification_Esception_ReturnFalse()
+        public void SendNotification_SendEmail_ReturFalse()
         {
             //Arrange
-            string recipient = null;
+            string recipient = "email@email.com";
             string message = "message";
 
             _mockEmailService.SendEmail(recipient, "Notification", message)
                 .Returns(false);
+
+            //Act
+            bool result = _service.SendNotification(recipient, message);
+
+            //Assert
+            result.Should().BeFalse();
+        }
+
+        [Fact]
+        public void SendNotification_Esception_ReturnFalse()
+        {
+            //Arrange
+            string recipient = "email@email.com";
+            string message = "message";
+
+            _mockEmailService.SendEmail(recipient, "Notification", message)
+                .Throws(new Exception());
 
             //Act
             bool result = _service.SendNotification(recipient, message);
