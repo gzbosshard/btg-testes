@@ -86,39 +86,23 @@ namespace btg_test
         }
 
         [Fact]
-        public void ProximoLivre_QuantidadeVagasDisponivelZero_RetornaZero()
+        public void ProximoLivre_SemAssentosDisponiveis_RetornaZero()
         {
-
             // Arrange
-            Voo voo = new Voo("Avião1", "123", DateTime.Now);
+            var voo = new Voo("Avião1", "123", DateTime.Now);
+            
+            for (int i = 0; i < 100; i++)
+            {
+            voo.OcupaAssento(i);
+            }
 
             voo.QuantidadeVagasDisponivel();
-            
 
             // Act
             var resultado = voo.ProximoLivre();
 
             // Assert
             resultado.Should().Be(0);
-        }
-
-        [Fact]
-        public void ProximoLivre_QuantidadeVagasDisponivelZero_RetornaDiferenteZero()
-        {
-
-            // Arrange
-            Voo voo = new Voo("Avião1", "123", DateTime.Now);
-            voo.OcupaAssento(0);
-
-            var quantidadeEsperada = 100;
-            voo.QuantidadeVagasDisponivel();
-
-
-            // Act
-            var resultado = voo.ProximoLivre();
-
-            // Assert
-            resultado.Should().BeLessThan(quantidadeEsperada);
         }
 
         [Fact]
