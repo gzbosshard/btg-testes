@@ -1,25 +1,11 @@
 using btg_testes_auto;
+using FluentAssertions;
 using System;
 
 namespace btg_test
 {
     public class CalculadoraTest
     {
-        /*
-         * Teste simulando erro
-        [Fact]
-        public void Somar_NumerosValidos_RetornaNumerosSomados()
-        {
-            // Arrange
-            Calculadora calculadora = new(2, 2);
-
-            // Act
-            double resultado = calculadora.Somar();
-
-            // Assert
-            Assert.Equal(5, resultado);
-        }*/
-
         [Fact]
         public void Somar_NumerosValidos_RetornaNumerosSomados()
         {
@@ -91,45 +77,19 @@ namespace btg_test
             Assert.Equal(1, resultado);
         }
 
-        // nomeMetodo_CondicaoCenario_ComportamentoEsperado
         [Fact]
         public void Dividir_NumeroInvalido_RetornaExcecao()
         {
-            Calculadora calculadora = new(2, 0);
-            
+            //Arrange
+            Calculadora calculadora = new(2, 0);            
 
-            Action resultado2 = () => calculadora.Dividir();
+            //Act
+            Action resultado = () => calculadora.Dividir();
             
-            Assert.Throws<Exception>(resultado2);
-  
+            //Assert
+            Assert.Throws<Exception>(resultado);
+            resultado.Should().Throw<Exception>().WithMessage("Mensagem exception");
+
         }
-
-        /*
-            double? resultado = calculadora.Dividir();
-
-            Assert.Null(resultado);
-
-            Assert.True(bool);
-            Assert.False(bool);
-
-            Assert.Null(objeto);
-            Assert.NotNull(objeto);
-
-            Assert.Empty(lista);
-            Assert.NotEmpty(lista);
-
-            Assert.StartsWith("esperado", "resultado");
-            Assert.EndsWith("esperado", "resultado");
-            
-            Assert.Contains("esperado", "resultado");
-            Assert.DoesNotContain();
-
-            Assert.InRange(150, 100, 200);
-            Assert.NotInRange();
-
-            // valida se lista possui 1 objeto
-            Assert.Single();
-
-            */
     }
 }

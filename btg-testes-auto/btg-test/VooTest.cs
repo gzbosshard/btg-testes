@@ -75,10 +75,10 @@ namespace btg_test
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
             var posicao = 0;
-            voo.OcupaAssento(posicao); 
+            voo.OcupaAssento(posicao);
 
             // Act
-            var resultado = voo.OcupaAssento(posicao); 
+            var resultado = voo.OcupaAssento(posicao);
 
             // Assert
             resultado.Should().BeFalse();
@@ -90,10 +90,30 @@ namespace btg_test
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
-            
+
             for (int i = 0; i < 100; i++)
             {
-            voo.OcupaAssento(i);
+                voo.OcupaAssento(i);
+            }
+
+            voo.QuantidadeVagasDisponivel();
+
+            // Act
+            var resultado = voo.ProximoLivre();
+
+            // Assert
+            resultado.Should().Be(0);
+        }
+
+        [Fact]
+        public void ProximoLivre_SemAssentosDisponiveisEAssentoDisponivelNulo_RetornaZero()
+        {
+            // Arrange
+            var voo = new Voo("Avião1", "123", DateTime.Now);
+
+            for (int i = 0; i < 100; i++)
+            {
+                voo.OcupaAssento(i);
             }
 
             voo.QuantidadeVagasDisponivel();
@@ -124,12 +144,12 @@ namespace btg_test
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
-            voo.OcupaAssento(0); 
-            voo.OcupaAssento(1); 
+            voo.OcupaAssento(0);
+            voo.OcupaAssento(1);
 
             // Act
-            var quantidadeEsperada = 100 - 2; 
-            var resultado = voo.QuantidadeVagasDisponivel(); 
+            var quantidadeEsperada = 100 - 2;
+            var resultado = voo.QuantidadeVagasDisponivel();
 
             // Assert
             resultado.Should().Be(quantidadeEsperada);

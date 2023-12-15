@@ -34,5 +34,18 @@ namespace btg_test
             //Assert
             Assert.Equal(130M, resultado);
         }
+
+        [Fact]
+        public void calcularPercentualVenda_IgualVinte()
+        {
+            //Arrange
+            Lucro lucro = new();
+
+            //Act
+            decimal resultado = lucro.Calcular(20M);
+
+            //Assert
+            Assert.Equal(26M, resultado);
+        }
     }
 }

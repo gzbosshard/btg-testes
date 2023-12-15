@@ -22,22 +22,7 @@ namespace btg_test.CartDiscountTest
         }
 
         [Fact]
-        public void CalculateTotalWithDiscount_EmptyItemList_ReturnsZero()
-        {
-            //Arrange
-            var items = new List<CartItem>();
-            
-
-            //Act
-            var result = _service.CalculateTotalWithDiscount(items);
-
-            //Assert
-            result.Should().Be(0);
-
-        }
-
-        [Fact]
-        public void CalculateTotalWithDiscount_NonEmptyItemList_ReturnsBiggerThanZero()
+        public void CalculateTotalWithDiscount_NonEmptyItemList_ReturnTotalAmountLessDiscount()
         {
             // Arrange
             var items = new List<CartItem>
@@ -47,11 +32,61 @@ namespace btg_test.CartDiscountTest
                 };
 
             // Act
-            var result = _service.CalculateTotalWithDiscount(items);
+            double totalAmount = 0;
+
+            foreach(CartItem item in items)
+            {
+                totalAmount += item.Price;
+            }
+
+            var discount = _service.CalculateTotalWithDiscount(items);
+            var result = totalAmount - discount;
 
             // Assert
-            result.Should().BeGreaterThan(0);
+            result.Should().BeLessThan(totalAmount);
         }
 
+        [Fact]
+        public void CalculateTotalWithDiscount_EmptyItemList_ReturnTotalAmountWithoutDiscount()
+        {
+            // Arrange
+            var items = new List<CartItem>();
+
+            // Act
+            double totalAmount = 0;
+
+            var discount = _service.CalculateTotalWithDiscount(items);
+            var result = totalAmount - discount;
+
+            // Assert
+            result.Should().Be(totalAmount);
+            discount.Should().Be(0);
+        }
+
+        [Fact]
+        public void CalculateTotalWithDiscount_NonEmptyItemList_FreeProducts()
+        {
+            // Arrange
+            var items = new List<CartItem>
+                {
+                    new CartItem { Price = 0, ProductId = "1" },
+                    new CartItem { Price = 0, ProductId = "2" }
+                };
+
+            // Act
+            double totalAmount = 0;
+
+            foreach (CartItem item in items)
+            {
+                totalAmount += item.Price;
+            }
+
+            var discount = _service.CalculateTotalWithDiscount(items);
+            var result = totalAmount - discount;
+
+            // Assert
+            result.Should().Be(totalAmount);
+            discount.Should().Be(0);
+        }
     }
 }

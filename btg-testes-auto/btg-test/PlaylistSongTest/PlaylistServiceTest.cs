@@ -41,6 +41,7 @@ namespace btg_test.PlaylistSongTest
             result.Should().BeTrue();
             _mockPlaylistValidationService.Received().CanAddSongToPlaylist(playlist, song1);
             playlist.Should().NotBeNull();
+            
         }
 
         [Fact]

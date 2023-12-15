@@ -26,13 +26,13 @@ namespace btg_test.ShippingCostTest
             //Arrange
             double distance = 250;
             DeliveryType deliveryType = DeliveryType.Express;
-            var cost = _mockDeliveryCostCalculator.CalculateCost(distance, deliveryType);
+            _mockDeliveryCostCalculator.CalculateCost(Arg.Any<double>(), Arg.Any<DeliveryType>()).Returns(100);
 
             //Act
             double result = _service.CalculateShippingCost(distance, deliveryType);
 
             //Assert
-            result.Should().Be(cost * 0.5);
+            result.Should().Be(50);
         }
 
         [Theory]
@@ -44,13 +44,13 @@ namespace btg_test.ShippingCostTest
         public void CalculateShippingCost_ApplyDiscount_DiscountNotApplied(double distance, DeliveryType deliveryType)
         {
             //Arrange
-            var cost = _mockDeliveryCostCalculator.CalculateCost(distance, deliveryType);
+            _mockDeliveryCostCalculator.CalculateCost(Arg.Any<double>(), Arg.Any<DeliveryType>()).Returns(100);
 
             //Act
             double result = _service.CalculateShippingCost(distance, deliveryType);
 
             //Assert
-            result.Should().Be(cost);
+            result.Should().Be(100);
         }
 
     }

@@ -5,7 +5,7 @@ namespace btg_test
     public class MediaNotasTest
     {
         [Fact]
-        public void CalculaMedia_NotasSuperiorA7_RetornaAprovado()
+        public void CalculaMedia_NotaSuperiorA7_RetornaAprovado()
         {
             // Arrange
             List<decimal> notas = new() { 7, 8, 9, 7 };
@@ -20,7 +20,22 @@ namespace btg_test
         }
 
         [Fact]
-        public void CalculaMedia_NotasInferiorA7ComRecuperacaoOK_RetornaAprovado()
+        public void CalculaMedia_NotaIgualA7_RetornaAprovado()
+        {
+            // Arrange
+            List<decimal> notas = new() { 7, 7, 7, 7 };
+            MediaNotas mediaNotas = new();
+
+            // Act
+            string resultado = mediaNotas.CalculaMedia(notas, null);
+
+            // Assert
+            Assert.Contains("Parabéns, você foi aprovado!", resultado);
+            Assert.Contains("7", resultado);
+        }
+
+        [Fact]
+        public void CalculaMedia_NotaInferiorA7ComRecuperacaoOK_RetornaAprovado()
         {
             // Arrange
             List<decimal> notas = new() { 7, 5, 8, 7 };
@@ -36,7 +51,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void CalculaMedia_NotasInferiorA7ComRecuperacaoInsuficiente_RetornaAprovado()
+        public void CalculaMedia_NotaInferiorA7ComRecuperacaoInsuficiente_RetornaAprovado()
         {
             // Arrange
             List<decimal> notas = new() { 7, 5, 8, 7 };
@@ -51,7 +66,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void CalculaMedia_NotasInferiorA7SemRecuperacao_RetornaAprovado()
+        public void CalculaMedia_NotaInferiorA7SemRecuperacao_RetornaReprovado()
         {
             // Arrange
             List<decimal> notas = new() { 7, 5, 8, 7 };

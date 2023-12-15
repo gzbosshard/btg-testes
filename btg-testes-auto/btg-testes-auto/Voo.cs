@@ -27,13 +27,16 @@ namespace btg_testes_auto
         }
 
         public int ProximoLivre()
+
         {
-            if (QuantidadeVagasDisponivel() == 0)
+            Assento? assentoDisponivel = Assentos.FirstOrDefault(x => !x.Ocupado);
+
+            if (QuantidadeVagasDisponivel() == 0 || assentoDisponivel == null)
             {
                 return 0;
             }
 
-            return Assentos.FirstOrDefault(x => !x.Ocupado).Posicao;
+            return assentoDisponivel.Posicao;
         }
 
         public bool AssentoDisponivel(int posicao)

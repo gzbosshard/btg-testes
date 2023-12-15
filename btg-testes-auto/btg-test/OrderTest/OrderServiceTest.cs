@@ -26,7 +26,7 @@ namespace btg_test.OrderTest
             };
 
             _mockInventoryService.GetStockQuantity("1")
-                .Returns(5);
+                .Returns(3);
 
             _mockInventoryService.UpdateStock("1", -3)
                 .Returns(true);
@@ -87,5 +87,7 @@ namespace btg_test.OrderTest
             _mockInventoryService.Received().GetStockQuantity(Arg.Any<string>());
             _mockInventoryService.DidNotReceive().UpdateStock(Arg.Any<string>(), Arg.Any<int>());
         }
+
+       
     }
 }

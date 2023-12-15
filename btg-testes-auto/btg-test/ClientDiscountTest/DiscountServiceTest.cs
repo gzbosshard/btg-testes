@@ -1,7 +1,9 @@
 ﻿using btg_testes_auto.Discount;
+using btg_testes_auto.PlaylistSongs;
 using Castle.Core.Resource;
 using FluentAssertions;
 using NSubstitute;
+using static System.Net.WebRequestMethods;
 
 namespace btg_test.ClientDiscountTest
 {
@@ -57,7 +59,7 @@ namespace btg_test.ClientDiscountTest
         {
             //Arrange
             var customerId = 3;
-            var purchaseAmount = 100.0;
+            var purchaseAmount = 100.0; 
 
             _mockCustomerService.GetCustomerType(customerId).Returns((CustomerType)3);
 
