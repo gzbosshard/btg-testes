@@ -41,7 +41,30 @@ namespace btg_test.PlaylistSongTest
             result.Should().BeTrue();
             _mockPlaylistValidationService.Received().CanAddSongToPlaylist(playlist, song1);
             playlist.Should().NotBeNull();
+            songs.Should().NotBeEmpty();
             
+        }
+
+        [Fact]
+        public void AddSongPlayList_AddSong_ReturnNull()
+        {
+            //Arrange
+
+            List<Song> songs = new List<Song>();
+
+            Playlist playlist = new() { Songs = songs, MaxSongs = 3 };
+
+
+            _mockPlaylistValidationService.CanAddSongToPlaylist(playlist, null).Returns(true);
+
+            //Act
+            bool result = _service.AddSongToPlaylist(playlist, null);
+
+            //Assert
+            result.Should().BeTrue();
+            playlist.Should().NotBeNull();
+            songs[0].Should().BeNull();
+
         }
 
         [Fact]
@@ -63,6 +86,7 @@ namespace btg_test.PlaylistSongTest
             //Assert
             result.Should().BeFalse();
             _mockPlaylistValidationService.Received().CanAddSongToPlaylist(playlist, song1);
+            
 
         }
 

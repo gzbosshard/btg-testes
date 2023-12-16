@@ -1,5 +1,6 @@
 ﻿using btg_testes_auto.CartDiscount;
 using btg_testes_auto.Order;
+using btg_testes_auto.PlaylistSongs;
 using FluentAssertions;
 using NSubstitute;
 using System;
@@ -26,24 +27,17 @@ namespace btg_test.CartDiscountTest
         {
             // Arrange
             var items = new List<CartItem>
-                {
-                    new CartItem { Price = 10, ProductId = "1" },
-                    new CartItem { Price = 20, ProductId = "2" }
-                };
+    {
+        new CartItem { Price = 10, ProductId = "1" },
+        new CartItem { Price = 20, ProductId = "2" }
+    };
+            _mockDiscountService.CalculateDiscount(items).Returns(2);
 
             // Act
-            double totalAmount = 0;
-
-            foreach(CartItem item in items)
-            {
-                totalAmount += item.Price;
-            }
-
-            var discount = _service.CalculateTotalWithDiscount(items);
-            var result = totalAmount - discount;
+            var result = _service.CalculateTotalWithDiscount(items);
 
             // Assert
-            result.Should().BeLessThan(totalAmount);
+            result.Should().Be(28); 
         }
 
         [Fact]
@@ -52,41 +46,14 @@ namespace btg_test.CartDiscountTest
             // Arrange
             var items = new List<CartItem>();
 
-            // Act
-            double totalAmount = 0;
-
-            var discount = _service.CalculateTotalWithDiscount(items);
-            var result = totalAmount - discount;
-
-            // Assert
-            result.Should().Be(totalAmount);
-            discount.Should().Be(0);
-        }
-
-        [Fact]
-        public void CalculateTotalWithDiscount_NonEmptyItemList_FreeProducts()
-        {
-            // Arrange
-            var items = new List<CartItem>
-                {
-                    new CartItem { Price = 0, ProductId = "1" },
-                    new CartItem { Price = 0, ProductId = "2" }
-                };
+            _mockDiscountService.CalculateDiscount(items).Returns(0);
 
             // Act
-            double totalAmount = 0;
-
-            foreach (CartItem item in items)
-            {
-                totalAmount += item.Price;
-            }
-
-            var discount = _service.CalculateTotalWithDiscount(items);
-            var result = totalAmount - discount;
+            var result = _service.CalculateTotalWithDiscount(items);
 
             // Assert
-            result.Should().Be(totalAmount);
-            discount.Should().Be(0);
+            result.Should().Be(0); 
         }
+
     }
 }

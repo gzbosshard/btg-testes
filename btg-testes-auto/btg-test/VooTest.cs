@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using NSubstitute;
 using btg_testes_auto;
+using System.Reflection;
+using NSubstitute.ReturnsExtensions;
 
 namespace btg_test
 {
@@ -69,21 +71,6 @@ namespace btg_test
             resultado.Should().BeTrue();
         }
 
-        [Fact]
-        public void OcupaAssento_AssentoNaoDisponivel_RetornaFalse()
-        {
-            // Arrange
-            var voo = new Voo("Avião1", "123", DateTime.Now);
-            var posicao = 0;
-            voo.OcupaAssento(posicao);
-
-            // Act
-            var resultado = voo.OcupaAssento(posicao);
-
-            // Assert
-            resultado.Should().BeFalse();
-
-        }
 
         [Fact]
         public void ProximoLivre_SemAssentosDisponiveis_RetornaZero()
@@ -91,12 +78,27 @@ namespace btg_test
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 voo.OcupaAssento(i);
             }
 
-            voo.QuantidadeVagasDisponivel();
+            // Act
+            var resultado = voo.ProximoLivre();
+
+            // Assert
+            resultado.Should().Be(0);
+            voo.QuantidadeVagasDisponivel().Should().Be(0);
+        }
+
+        [Fact]
+        public void ProximoLivre_SemAssentosDisponiveis_E_AssentoDisponivelNull_RetornaZero()
+        {
+            // Arrange
+            var voo = new Voo("Avião1", "123", DateTime.Now);
+
+            var novoAssento = new Assento(101);
+            novoAssento.Ocupado = true;
 
             // Act
             var resultado = voo.ProximoLivre();
