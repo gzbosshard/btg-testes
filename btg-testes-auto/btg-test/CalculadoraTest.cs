@@ -52,7 +52,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void Multiplicar_NumerosValores_RetornaNumerosMultiplicados()
+        public void Multiplicar_NumerosValidos_RetornaNumerosMultiplicados()
         {
             // Arrange
             Calculadora calculadora = new(2, 2);

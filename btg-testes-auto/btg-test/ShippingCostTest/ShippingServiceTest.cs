@@ -21,7 +21,7 @@ namespace btg_test.ShippingCostTest
         }
 
         [Fact]
-        public void CalculateShippingCost_ApplyDiscount_DiscountApplied()
+        public void CalculateShippingCost_ApplyDiscount_ReturnDiscountApplied()
         {
             //Arrange
             double distance = 250;
@@ -41,7 +41,7 @@ namespace btg_test.ShippingCostTest
         [InlineData(250, DeliveryType.Ordinary)]
         [InlineData(100, DeliveryType.Ordinary)]
         [InlineData(200, DeliveryType.Ordinary)]
-        public void CalculateShippingCost_ApplyDiscount_DiscountNotApplied(double distance, DeliveryType deliveryType)
+        public void CalculateShippingCost_ApplyDiscount_ReturnDiscountNotApplied(double distance, DeliveryType deliveryType)
         {
             //Arrange
             _mockDeliveryCostCalculator.CalculateCost(Arg.Any<double>(), Arg.Any<DeliveryType>()).Returns(100);

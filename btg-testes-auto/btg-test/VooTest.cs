@@ -14,7 +14,7 @@ namespace btg_test
     public class VooTest
     {
         [Fact]
-        public void ExibeInformacoesVoo_RetornaTexto()
+        public void ExibeInformacoesVoo_InformacoesVoo_RetornaTextoComInformacoes()
         {
             //Arrange
             DateTime data = new DateTime(2023, 12, 08, 14, 30, 00);
@@ -62,7 +62,7 @@ namespace btg_test
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
-            var posicao = 0;
+            var posicao = 1;
 
             // Act
             var resultado = voo.OcupaAssento(posicao);
@@ -92,28 +92,12 @@ namespace btg_test
         }
 
         [Fact]
-        public void ProximoLivre_SemAssentosDisponiveis_E_AssentoDisponivelNull_RetornaZero()
-        {
-            // Arrange
-            var voo = new Voo("Avião1", "123", DateTime.Now);
-
-            var novoAssento = new Assento(101);
-            novoAssento.Ocupado = true;
-
-            // Act
-            var resultado = voo.ProximoLivre();
-
-            // Assert
-            resultado.Should().Be(0);
-        }
-
-        [Fact]
         public void ProximoLivre_SemAssentosDisponiveisEAssentoDisponivelNulo_RetornaZero()
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i <= 100; i++)
             {
                 voo.OcupaAssento(i);
             }
@@ -128,7 +112,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void ProximoLivre_ComAssentosDisponiveis_RetornaProximoAssentoLivre()
+        public void ProximoLivre_ComAssentosDisponiveis_RetornaProximoAssentoLivreMaiorQueZero()
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
@@ -142,12 +126,12 @@ namespace btg_test
         }
 
         [Fact]
-        public void QuantidadeVagasDisponivel_AposOcuparAssentos_DeveRetornarQuantidadeCorreta()
+        public void QuantidadeVagasDisponivel_AposOcuparAssentos_RetornaQuantidadeCorreta()
         {
             // Arrange
             var voo = new Voo("Avião1", "123", DateTime.Now);
-            voo.OcupaAssento(0);
             voo.OcupaAssento(1);
+            voo.OcupaAssento(2);
 
             // Act
             var quantidadeEsperada = 100 - 2;

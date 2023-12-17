@@ -20,7 +20,7 @@ namespace btg_testes_auto
             DataHora = dataHora;
             QuantidadeTotalPassageiros = 100;
             Assentos = new();
-            for (int i = 0; i < QuantidadeTotalPassageiros; i++)
+            for (int i = 1; i <= QuantidadeTotalPassageiros; i++)
             {
                 Assentos.Add(new Assento(i));
             }
@@ -51,7 +51,7 @@ namespace btg_testes_auto
             {
                 return false;
             }
-            Assentos[posicao].Ocupado = true;
+            Assentos[posicao -1].Ocupado = true;
             return true;
         }
 

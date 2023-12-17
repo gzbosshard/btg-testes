@@ -51,7 +51,7 @@ namespace btg_test.NotificationEmailTest
         }
 
         [Fact]
-        public void SendNotification_SendEmail_EmailSent()
+        public void SendNotification_SendEmail_ReturnTrue()
         {
             //Arrange
             string recipient = "email@email.com";
@@ -85,7 +85,7 @@ namespace btg_test.NotificationEmailTest
         }
 
         [Fact]
-        public void SendNotification_Esception_ReturnFalse()
+        public void SendNotification_Exception_ReturnFalse()
         {
             //Arrange
             string recipient = "email@email.com";

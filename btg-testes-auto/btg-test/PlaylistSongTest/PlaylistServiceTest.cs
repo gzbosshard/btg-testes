@@ -91,7 +91,7 @@ namespace btg_test.PlaylistSongTest
         }
 
         [Fact]
-        public void AddSongPlayList_AddSongs_SongsAdded()
+        public void AddSongPlayList_AddSongs_ReturnSongsAdded()
         {
             //Arrange
 
@@ -123,7 +123,7 @@ namespace btg_test.PlaylistSongTest
         }
 
         [Fact]
-        public void AddSongPlayList_AddSongs_ASongNotAdded()
+        public void AddSongPlayList_AddSongs_ReturnASongNotAdded()
         {
             //Arrange
 

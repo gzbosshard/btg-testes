@@ -16,7 +16,7 @@ namespace btg_test
         [InlineData("RJ", 100, 115)]
         [InlineData("MS", 100, 108)]
         [InlineData("SC", 100, 118)]
-        public void ValorProdutoComImposto_CalculoValor_RetornaValor(string estado, decimal valorInicial, decimal valorEsperado)
+        public void ValorProdutoComImposto_InformaEstado_RetornaValorComImposto(string estado, decimal valorInicial, decimal valorEsperado)
         {
             // Arrange
             var impostoProduto = new ImpostoProduto(valorInicial, estado);
@@ -29,7 +29,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void ValorProdutoComImposto_DeveLancarExceptionParaEstadoInvalido()
+        public void ValorProdutoComImposto_InformaEstadoInvalido_RetornaExcecao()
         {
             // Arrange
             var impostoProduto = new ImpostoProduto(100, "INVALIDO");

@@ -10,7 +10,7 @@ namespace btg_test
     public class LucroTest
     {
         [Fact]
-        public void calcularPercentualVenda_MenorQueVinte()
+        public void calcularPercentualVenda_MenorQueVinte_RetornaVendaComLucro()
         {
             //Arrange
             Lucro lucro = new();
@@ -23,7 +23,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void calcularPercentualVenda_MaiorQueVinte()
+        public void calcularPercentualVenda_MaiorQueVinte_RetornaVendaComLucro()
         {
             //Arrange
             Lucro lucro = new();
@@ -36,7 +36,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void calcularPercentualVenda_IgualVinte()
+        public void calcularPercentualVenda_IgualVinte_RetornaValorComLucro()
         {
             //Arrange
             Lucro lucro = new();

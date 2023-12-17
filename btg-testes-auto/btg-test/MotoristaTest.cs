@@ -53,7 +53,7 @@ namespace btg_test
 
 
         [Fact]
-        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountMenorQue2()
+        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountMenorQue2_RetornaExcecao()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -74,7 +74,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountZero()
+        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountZero_RetornaExcecao()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -95,7 +95,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountMaiorQue2()
+        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountMaiorQue2_RetornaSucesso()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -114,7 +114,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountIgual2()
+        public void EncontrarMotoristas_IdadeMaiorQue18PossuiHabilitacao_CountIgual2_RetornaSucesso()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -133,7 +133,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountMenorQue2()
+        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountMenorQue2_RetornaExcecao()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -154,7 +154,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountZero()
+        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountZero_RetornaExcecao()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -175,7 +175,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountMaiorQue2()
+        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountMaiorQue2_RetornaSucesso()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {
@@ -194,7 +194,7 @@ namespace btg_test
         }
 
         [Fact]
-        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountIgual2()
+        public void EncontrarMotoristas_IdadeIgual18PossuiHabilitacao_CountIgual2_RetornaSucesso()
         {
             List<Pessoa> pessoas = new List<Pessoa>
         {

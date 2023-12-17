@@ -3,6 +3,7 @@ C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exe
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\CartDiscountTest\CartServiceTest.cs
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\ClientDiscountTest\DiscountServiceTest.cs
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\FuncionarioTest.cs
+C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\ImpostoProdutoTest.cs
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\INSSTest.cs
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\LucroTest.cs
 C:\Users\gzbosshard\OneDrive\_CURSOS\curso_csharp_ada\CURSO_SEMESTRE\modulo6\exercicios_entrega_testes\btg-testes\btg-testes-auto\btg-test\MediaIdadesTest.cs

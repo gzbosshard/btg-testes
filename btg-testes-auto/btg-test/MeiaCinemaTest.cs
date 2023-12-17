@@ -18,7 +18,7 @@ namespace btg_test
         [InlineData(true, false, false, false)]
         [InlineData(false, true, false, false)]
         [InlineData(false, false, true, true)]
-        public void VerificarMeiaCinema_RetornaTrue(bool estudante, bool doadorDeSangue, bool trabalhadorPrefeitura, bool contratoPrefeitura)
+        public void VerificarMeiaCinema_ExpectadoresComDireitoAMeia_RetornaTrue(bool estudante, bool doadorDeSangue, bool trabalhadorPrefeitura, bool contratoPrefeitura)
         {
             //Arrange
             MeiaCinema meiaCinema = new();
@@ -35,7 +35,7 @@ namespace btg_test
         [InlineData(false, false, true, false)]
         [InlineData(false, false, false, true)]
 
-        public void VerificarMeiaCinema_RetornaFalse(bool estudante, bool doadorDeSangue, bool trabalhadorPrefeitura, bool contratoPrefeitura)
+        public void VerificarMeiaCinema_ExpectadoresSemDireitoAMeia_RetornaFalse(bool estudante, bool doadorDeSangue, bool trabalhadorPrefeitura, bool contratoPrefeitura)
         {
             //Arrange
             MeiaCinema meiaCinema = new();
